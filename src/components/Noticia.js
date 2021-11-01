@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './Noticia.module.css';
 import img from './reactjs.png'
 
-const Noticia = ({noticia}) => {
+const Noticia = ({noticiawap}) => {
 
-	const { title, description, urlToImage, url } = noticia;
+	const { title, description, urlToImage, url } = noticiawap;
 
 
 	const imagen = (urlToImage==null) ? img : urlToImage;

@@ -2,16 +2,12 @@ import React from 'react';
 import Noticia from './Noticia.js';
 import styles from './ListadoNoticias.module.css';
 
-const ListadoNoticias = ({noticias}) => {
-	return (
-		<div className={styles.container}>
-			{noticias.map((noticia, index)=>(
-				<Noticia
-					key={index}
-					noticia={noticia}
-				/>
-			))}
-		</div>
+const ListadoNoticias = ({news}) => {
+	return (<div className={styles.container}>{news.map((noticiawap, index)=>(<Noticia
+						key={index}
+						noticiawap={noticiawap}/>
+				))}
+			</div>
 	)
 }
 
