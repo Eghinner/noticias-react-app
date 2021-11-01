@@ -17,7 +17,7 @@ const Formulario = ({guardarCategoria}) => {
 
 
 	//custom hook
-	const [categoria, SelectNoticias] = useSelect('general' ,OPCIONES);
+	const [categoria, SelectNoticias] = useSelect('general', OPCIONES);
 
 	const buscarNoticia = e => {
     e.preventDefault();

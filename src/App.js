@@ -6,19 +6,25 @@ import ListadoNoticias from './components/ListadoNoticias.js';
 function App() {
 
   const [categoria, guardarCategoria] = useState('general');
-  const [news, guardarNoticias] = useState([]);
-  const [cargar, setCargar] = useState(false)
+  const [news, guardarNoticias] = useState(undefined);
+  const [cargar, setCargar] = useState(false);
 
   useEffect(() => {
-    setCargar(true)
-    const ConultarApi = async () => {
+    setCargar(true);
+    // const ConultarApi = async () => {
       const url = `https://newsapi.org/v2/top-headlines?country=ve&category=${categoria}&apiKey=e0c743764f904e5da16721625e87820e`;
-      const respuesta = await fetch(url);
-      const noticias = await respuesta.json();
-      guardarNoticias(noticias.articles);
-      setCargar(false)
-    }
-    ConultarApi();
+      // const respuesta = await fetch(url);
+      // const noticias = await respuesta.json();
+      // guardarNoticias(noticias.articles);
+      fetch(url)
+        .then(res=>res.json())
+        .then(data=>guardarNoticias(data.articles))
+        .catch(e=>{
+          console.log(e)
+        })
+        .finally(()=>setCargar(false))
+    // }
+    // ConultarApi();
   }, [categoria]);
 
 
