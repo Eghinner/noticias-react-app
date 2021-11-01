@@ -1,0 +1,38 @@
+.heading {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 900;
+	font-size: 2rem;
+	text-transform: uppercase;
+	text-align: center;
+	margin: auto 3rem;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.form {
+	max-width: 1000px;
+	margin: 2rem auto;
+}
+
+.btnblock {
+	border-radius: 5px;
+	margin-top: 1rem;
+	font-size: 1.2rem;
+	border: none;
+	outline: none;
+	padding: 1rem;
+	font-weight: bold;
+	background-color: #af9eab;
+	width: 100%;
+	color: #fff;
+	transition: background-color ease .5s;
+}
+
+.btnblock:hover {
+	cursor: pointer;
+	background-color: #af7eab;
+}

@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import Formulario from './components/Formulario.js';
+import ListadoNoticias from './components/ListadoNoticias.js';
 
 function App() {
+
+  const [categoria, guardarCategoria] = useState('');
+  const [noticias, guardarNoticias] = useState([]);
+
+  useEffect(() => {
+    const ConultarApi = async () =>{
+      const url = `https://newsapi.org/v2/top-headlines?country=ve&category=${categoria}&apiKey=e0c743764f904e5da16721625e87820e`;
+      const respuesta = await fetch(url);
+      const noticias = await respuesta.json();
+      guardarNoticias(noticias.articles);
+    }
+    ConultarApi();
+  }, [categoria]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <React.Fragment>
+      <nav>
+        Noticia
+      </nav>
+      <div >
+        <Formulario
+          guardarCategoria={guardarCategoria}
+        />
+        <ListadoNoticias
+          noticias={noticias}
+        />
+      </div>
+      <footer>Encuentra las últimas noticias <span>@copyright 2021</span></footer>
+      </React.Fragment>
+      );
 }
 
 export default App;
